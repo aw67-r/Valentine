@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pour ma beauté des îles</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --primary: #8e6d5e;
+
+            --accent: #d4a373;
+
+            --island-soft: #f4e4ba;
+
+            --bg: #fdfaf7;
+
+        }
+
+
+
+        body {
+
+            background-color: var(--bg);
+
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+            font-family: 'Lora', serif;
+
+            overflow: hidden;
+
+            height: 100vh;
+
+            margin: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        .card {
+
+            background: rgba(255, 255, 255, 0.85);
+
+            backdrop-filter: blur(12px);
+
+            border: 1px solid #e2d1c3;
+
+            box-shadow: 0 25px 60px rgba(142, 109, 94, 0.12);
+
+            border-radius: 2.5rem;
+
+            padding: 3.5rem 2rem;
+
+            text-align: center;
+
+            max-width: 500px;
+
+            width: 90%;
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+
+
+        .nickname {
+
+            font-family: 'Dancing Script', cursive;
+
+            color: var(--accent);
+
+            font-size: 1.8rem;
+
+            margin-bottom: 0.2rem;
+
+            display: block;
+
+        }
+
+
+
+        h1 {
+
+            font-family: 'Dancing Script', cursive;
+
+            color: var(--primary);
+
+            font-size: 2.8rem;
+
+            margin-bottom: 0.5rem;
+
+            line-height: 1.1;
+
+        }
+
+
+
+        .date-badge {
+
+            display: inline-block;
+
+            background: var(--island-soft);
+
+            color: #8e6d5e;
+
+            padding: 0.4rem 1.4rem;
+
+            border-radius: 20px;
+
+            font-size: 0.85rem;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 1.5rem;
+
+        }
+
+
+
+        .btn {
+
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            padding: 0.9rem 2.8rem;
+
+            border-radius: 50px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            border: none;
+
+            font-size: 1.15rem;
+
+            font-family: 'Lora', serif;
+
+        }
+
+
+
+        .btn-yes {
+
+            background-color: var(--accent);
+
+            color: white;
+
+            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.35);
+
+        }
+
+
+
+        .btn-yes:hover {
+
+            transform: scale(1.1);
+
+            filter: brightness(1.05);
+
+        }
+
+
+
+        .btn-no {
+
+            background-color: #f1f3f5;
+
+            color: #adb5bd;
+
+            position: absolute;
+
+            white-space: nowrap;
+
+            z-index: 100;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+        }
+
+
+
+        #success {
+
+            display: none;
+
+            animation: fadeInScale 0.8s ease-out forwards;
+
+        }
+
+
+
+        @keyframes fadeInScale {
+
+            from { opacity: 0; transform: scale(0.9); }
+
+            to { opacity: 1; transform: scale(1); }
+
+        }
+
+
+
+        .floating-emoji {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            z-index: 50;
+
+            animation: fall linear forwards;
+
+        }
+
+
+
+        @keyframes fall {
+
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+
+        }
+
+
+
+        .island-deco {
+
+            position: absolute;
+
+            font-size: 2rem;
+
+            opacity: 0.3;
+
+            pointer-events: none;
+
+        }
+@media (max-width: 900px) { 
+img { 
+   max-width: 100%;
+   height: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+}	
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="card" id="card">
+
+        <div id="content">
+
+            <span class="nickname">Ma beauté des îles,</span>
+
+            <div class="date-badge">14 Février 2024</div>
+
+            <h1>Veux-tu être ma Valentine ?</h1>
+
+            <p class="text-stone-500 italic mb-10 leading-relaxed px-4">
+
+                J'aimerais partager avec toi la douceur de l'après-midi et la magie de la soirée...
+
+            </p>
+
+            
+
+            <div class="flex justify-center items-center gap-6 min-h-[100px]">
+
+                <button id="yesBtn" class="btn btn-yes" onclick="confirm()">Oui 🥰</button>
+
+                <button id="noBtn" class="btn btn-no">Non 😵</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div id="success">
+
+            <div class="text-6xl mb-6">🌺🍹🏝️</div>
+
+            <h1 style="font-size: 2.8rem;">C'est merveilleux !</h1>
+
+            <p class="text-stone-600 mt-4 leading-relaxed text-lg">
+
+                Rendez-vous le <strong>14 février</strong>.<br>
+
+                Une journée inoubliable nous attend,<br>
+
+                de l'<strong>après-midi</strong> jusqu'au bout de la <strong>soirée</strong>.
+
+            </p>
+
+            <div class="mt-8 pt-6 border-t border-stone-100 flex justify-center gap-6">
+
+                <span class="text-2xl">🐚</span>
+
+                <span class="text-2xl">✨</span>
+
+                <span class="text-2xl">🕯️</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        const noBtn = document.getElementById('noBtn');
+
+        const card = document.getElementById('card');
+
+        const content = document.getElementById('content');
+
+        const success = document.getElementById('success');
+
+
+
+        function moveButton() {
+
+            const padding = 70;
+
+            // Calcul pour garder le bouton dans la zone visible mais loin du centre
+
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding * 2) + padding;
+
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding * 2) + padding;
+
+            
+
+            noBtn.style.position = 'fixed';
+
+            noBtn.style.left = `${x}px`;
+
+            noBtn.style.top = `${y}px`;
+
+        }
+
+
+
+        // Esquive interactive
+
+        noBtn.addEventListener('mouseover', moveButton);
+
+        noBtn.addEventListener('touchstart', (e) => {
+
+            e.preventDefault();
+
+            moveButton();
+
+        });
+
+
+
+        function confirm() {
+
+            content.style.display = 'none';
+
+            success.style.display = 'block';
+
+            
+
+            // Pluie de fleurs exotiques et coeurs
+
+            for(let i = 0; i < 60; i++) {
+
+                setTimeout(spawnEmoji, i * 50);
+
+            }
+
+        }
+
+
+
+        function spawnEmoji() {
+
+            const emojis = ['🌺', '🤍', '🥥', '✨', '🌸', '🌊', '🏝️'];
+
+            const el = document.createElement('div');
+
+            el.className = 'floating-emoji';
+
+            el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+            el.style.left = Math.random() * 100 + 'vw';
+
+            el.style.top = '-5vh';
+
+            el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+            
+
+            const duration = Math.random() * 2.5 + 3.5;
+
+            el.style.animationDuration = duration + 's';
+
+            
+
+            document.body.appendChild(el);
+
+            setTimeout(() => el.remove(), duration * 1000);
+
+        }
+
+    </script>
+
+<p style="bottom: 10px; right: 10px; position: absolute;"><a href="https://wordtohtml.net/?utm_source=wth_free_doc_conversion_link&utm_medium=external" target="_blank" style="font-size:11px; color: #d0d0d0">Converti en HTML avec WordToHTML.net</a><span style="font-size:11px; color: #d0d0d0"> | </span><a href="https://documentconverter.pro/?utm_source=wth_free_doc_conversion_link&utm_medium=external" target="_blank" style="font-size:11px; color: #d0d0d0">Convertisseur de documents pour Windows</a></p>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4581d6a58cf94e929fad52deda295622","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+</html>
+
